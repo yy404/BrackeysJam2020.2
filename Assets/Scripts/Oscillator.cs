@@ -19,7 +19,7 @@ public class Oscillator : MonoBehaviour
     {
         Init();
 
-        noteList = new int[] {0,1,2,3,4,5,6,7};
+        noteList = new int[] {1,2,3,4,5,6,7};
         audioData = new float[noteList.Length][];
 
         for (int i = 0; i < noteList.Length; i++)
@@ -103,13 +103,13 @@ public class Oscillator : MonoBehaviour
         noteLength = (int) sampling_frequency / 4;
 
         frequencies = new float[8];
-        frequencies[0] = 440;
-        frequencies[1] = 494;
-        frequencies[2] = 554;
-        frequencies[3] = 587;
-        frequencies[4] = 659;
-        frequencies[5] = 740;
-        frequencies[6] = 831;
-        frequencies[7] = 880;
+        frequencies[0] = 0;
+        frequencies[1] = 261.63f;
+        frequencies[2] = 293.66f;
+        frequencies[3] = 329.63f;
+        frequencies[4] = 349.23f;
+        frequencies[5] = 392.00f;
+        frequencies[6] = 440.00f;
+        frequencies[7] = 493.88f;
     }
 }
