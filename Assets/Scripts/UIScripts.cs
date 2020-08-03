@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonScripts : MonoBehaviour
+public class UIScripts : MonoBehaviour
 {
     private Oscillator oscillator;
     // Start is called before the first frame update
