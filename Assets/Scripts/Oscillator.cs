@@ -12,6 +12,7 @@ public class Oscillator : MonoBehaviour
     private float[] frequencies;
 
     private bool isPause = true;
+    private bool isRewinding = false;
     private int[] noteList;
     private float[][] audioData;
 
@@ -44,13 +45,33 @@ public class Oscillator : MonoBehaviour
                 {
                     dataIndex = 0;
                 }
-                if (dataIndex < noteLength * noteList.Length)
+                else if (dataIndex < noteLength * noteList.Length)
                 {
                     data[i] = audioData[dataIndex/noteLength][dataIndex%noteLength];
-                    dataIndex += 1;
+
                     if (channels == 2)
                     {
                         data[i+1] = data[i];
+                    }
+
+                    if (isRewinding)
+                    {
+                        dataIndex -= 1;
+                    }
+                    else
+                    {
+                        dataIndex += 1;
+                    }
+                }
+                else
+                {
+                    if (isRewinding)
+                    {
+                        if (dataIndex > noteLength * noteList.Length)
+                        {
+                            dataIndex = noteLength * noteList.Length;
+                        }
+                        dataIndex -= 1;
                     }
                 }
             }
@@ -82,9 +103,16 @@ public class Oscillator : MonoBehaviour
         return thisNoteData;
     }
 
-    public void Rewind()
+    public void SetRewind()
     {
-        dataIndex -= (int) sampling_frequency;
+        isRewinding = true;
+        isPause = false;
+    }
+
+    public void ResetRewind()
+    {
+        isRewinding = false;
+        isPause = true;
     }
 
     public void Pause()
@@ -115,14 +143,15 @@ public class Oscillator : MonoBehaviour
 
     int[] GeneNoteList()
     {
-        int[] notelist = new int[] {1,2,3,4,5,6,7};
-        for (int i = 0; i < notelist.Length-1; i++)
-        {
-            int rnd = Random.Range(i, notelist.Length);
-            int temp = notelist[rnd];
-            notelist[rnd] = notelist[i];
-            notelist[i] = temp;
-        }
+        // int[] notelist = new int[] {1,2,3,4,5,6,7};
+        int[] notelist = new int[] {2,3,4,5,5,4,3,3}; //33455432
+        // for (int i = 0; i < notelist.Length-1; i++)
+        // {
+        //     int rnd = Random.Range(i, notelist.Length);
+        //     int temp = notelist[rnd];
+        //     notelist[rnd] = notelist[i];
+        //     notelist[i] = temp;
+        // }
         return notelist;
     }
 }
