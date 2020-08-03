@@ -67,7 +67,7 @@ public class KeyOscillator : MonoBehaviour
 
     public void PlayKey(int keyValue)
     {
-        Debug.Log(keyValue);
+        // Debug.Log(keyValue);
         frequency = frequencies[keyValue];
         isPause = false;
     }
