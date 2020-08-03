@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIScripts : MonoBehaviour
 {
     public Slider slider;
+    public InputField inputField;
     private Oscillator oscillator;
 
     // Start is called before the first frame update
@@ -20,6 +21,14 @@ public class UIScripts : MonoBehaviour
         if (slider != null)
         {
             slider.value = oscillator.GetProgressRatio();
+        }
+    }
+
+    public void CheckInput()
+    {
+        if (inputField.text == oscillator.GetNoteString())
+        {
+            Debug.Log("Win");
         }
     }
 }

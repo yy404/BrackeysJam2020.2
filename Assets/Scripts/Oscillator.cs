@@ -21,6 +21,7 @@ public class Oscillator : MonoBehaviour
         Init();
 
         noteList = GeneNoteList();
+        Debug.Log(GetNoteString());
         audioData = new float[noteList.Length][];
 
         for (int i = 0; i < noteList.Length; i++)
@@ -125,6 +126,16 @@ public class Oscillator : MonoBehaviour
         return (float) dataIndex / (noteLength * noteList.Length);
     }
 
+    public string GetNoteString()
+    {
+        string res = "";
+        foreach (int i in noteList)
+        {
+            res = i.ToString() + res;
+        }
+        return res;
+    }
+
     void Init()
     {
         sampling_frequency = AudioSettings.outputSampleRate; //48000.0
@@ -143,15 +154,14 @@ public class Oscillator : MonoBehaviour
 
     int[] GeneNoteList()
     {
-        // int[] notelist = new int[] {1,2,3,4,5,6,7};
-        int[] notelist = new int[] {2,3,4,5,5,4,3,3}; //33455432
-        // for (int i = 0; i < notelist.Length-1; i++)
-        // {
-        //     int rnd = Random.Range(i, notelist.Length);
-        //     int temp = notelist[rnd];
-        //     notelist[rnd] = notelist[i];
-        //     notelist[i] = temp;
-        // }
+        int[] notelist = new int[] {1,2,3,4,5,6,7};
+        for (int i = 0; i < notelist.Length-1; i++)
+        {
+            int rnd = Random.Range(i, notelist.Length);
+            int temp = notelist[rnd];
+            notelist[rnd] = notelist[i];
+            notelist[i] = temp;
+        }
         return notelist;
     }
 }
