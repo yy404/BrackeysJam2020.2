@@ -16,12 +16,15 @@ public class Oscillator : MonoBehaviour
     private int[] noteList;
     private float[][] audioData;
 
+    void Awake()
+    {
+        noteList = GeneNoteList();
+    }
+
     void Start()
     {
         Init();
 
-        noteList = GeneNoteList();
-        Debug.Log(GetNoteString());
         audioData = new float[noteList.Length][];
 
         for (int i = 0; i < noteList.Length; i++)
