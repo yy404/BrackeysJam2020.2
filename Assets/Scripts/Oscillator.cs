@@ -11,7 +11,7 @@ public class Oscillator : MonoBehaviour
     private int noteLength;
     private float[] frequencies;
 
-    private bool isPause = false;
+    private bool isPause = true;
     private int[] noteList;
     private float[][] audioData;
 
@@ -90,6 +90,11 @@ public class Oscillator : MonoBehaviour
     public void Pause()
     {
         isPause = !isPause;
+    }
+
+    public float GetProgressRatio()
+    {
+        return (float) dataIndex / (noteLength * noteList.Length);
     }
 
     void Init()
