@@ -58,7 +58,11 @@ public class UIScripts : MonoBehaviour
     {
         if (inputField.text == noteListString)
         {
-            Debug.Log("Win");
+            Debug.Log("Correct");
+        }
+        else
+        {
+            Debug.Log("Wrong");
         }
     }
 }
