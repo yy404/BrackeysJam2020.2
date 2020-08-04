@@ -134,7 +134,7 @@ public class Oscillator : MonoBehaviour
         string res = "";
         foreach (int i in noteList)
         {
-            res = i.ToString() + res;
+            res += i.ToString();
         }
         return res;
     }

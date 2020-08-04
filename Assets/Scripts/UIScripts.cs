@@ -7,6 +7,7 @@ public class UIScripts : MonoBehaviour
 {
     public Slider slider;
     public InputField inputField;
+    public int noteListLen;
     public int hintDigits;
 
     private Oscillator oscillator;
@@ -17,7 +18,21 @@ public class UIScripts : MonoBehaviour
     {
         oscillator = FindObjectOfType<Oscillator>();
         noteListString = oscillator.GetNoteString();
-        inputField.text = noteListString.Substring(0, hintDigits);
+
+        if (hintDigits < noteListLen)
+        {
+            string temp = "";
+            temp = noteListString.Substring(0, hintDigits);
+            for (int i = hintDigits; i < noteListLen; i++)
+            {
+                temp += "?";
+            }
+            inputField.placeholder.GetComponent<Text>().text = temp;
+        }
+        else
+        {
+            inputField.placeholder.GetComponent<Text>().text = noteListString;
+        }
     }
 
     // Update is called once per frame
