@@ -13,12 +13,14 @@ public class UIScripts : MonoBehaviour
     public int hintDigits;
 
     private Oscillator oscillator;
+    private GameplayManager gameplayManager;
     public string noteListString;
 
     // Start is called before the first frame update
     void Start()
     {
         oscillator = FindObjectOfType<Oscillator>();
+        gameplayManager = FindObjectOfType<GameplayManager>();
         noteListString = oscillator.GetNoteString();
 
         if (hintDigits < noteListLen)
@@ -59,10 +61,12 @@ public class UIScripts : MonoBehaviour
         if (inputField.text == noteListString)
         {
             Debug.Log("Correct");
+            gameplayManager.EndGame();
         }
         else
         {
             Debug.Log("Wrong");
+            gameplayManager.EndGame();
         }
     }
 }
