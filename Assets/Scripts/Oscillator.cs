@@ -119,9 +119,9 @@ public class Oscillator : MonoBehaviour
         isPause = true;
     }
 
-    public void Pause()
+    public void Sing()
     {
-        isPause = !isPause;
+        isPause = false;
     }
 
     public float GetProgressRatio()
