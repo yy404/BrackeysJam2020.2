@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class UIScripts : MonoBehaviour
 {
-    public Slider slider;
+    public Slider monsterSlider;
+    public Slider heroSlider;
     public InputField inputField;
+    public Text powerPoints;
     public int noteListLen;
     public int hintDigits;
 
@@ -38,9 +40,17 @@ public class UIScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slider != null)
+        if (monsterSlider != null)
         {
-            slider.value = oscillator.GetProgressRatio();
+            monsterSlider.value = oscillator.GetProgressRatio();
+        }
+        if (heroSlider != null)
+        {
+            float decimalPart = oscillator.GetCurrPowerValue() % 1;
+            heroSlider.value = decimalPart;
+
+            int intPart = (int) (oscillator.GetCurrPowerValue() - decimalPart);
+            powerPoints.text = "x" + intPart.ToString();
         }
     }
 

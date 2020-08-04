@@ -141,6 +141,11 @@ public class Oscillator : MonoBehaviour
         return (float) dataIndex / (noteLength * noteList.Length);
     }
 
+    public float GetCurrPowerValue()
+    {
+        return (float) currPowerValue / (noteLength * noteList.Length);
+    }
+
     public string GetNoteString()
     {
         string res = "";
