@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Oscillator : MonoBehaviour
 {
     public int dataIndex;
+    public int maxPowerValue;
+    public float currPowerValue;
 
     private double sampling_frequency;
     private int noteLength;
@@ -24,6 +26,8 @@ public class Oscillator : MonoBehaviour
     void Start()
     {
         Init();
+
+        currPowerValue = maxPowerValue * noteLength * noteList.Length;
 
         audioData = new float[noteList.Length][];
 
@@ -60,7 +64,11 @@ public class Oscillator : MonoBehaviour
 
                     if (isRewinding)
                     {
-                        dataIndex -= 2;
+                        if (currPowerValue > 0 && dataIndex > 0)
+                        {
+                            dataIndex -= 2;
+                            currPowerValue -= 2;
+                        }
                     }
                     else
                     {
@@ -75,7 +83,11 @@ public class Oscillator : MonoBehaviour
                         {
                             dataIndex = noteLength * noteList.Length;
                         }
-                        dataIndex -= 2;
+                        if (currPowerValue > 0 && dataIndex > 0)
+                        {
+                            dataIndex -= 2;
+                            currPowerValue -= 2;
+                        }
                     }
                 }
             }

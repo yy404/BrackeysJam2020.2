@@ -2698,6 +2698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataIndex: 0
+  maxPowerValue: 2
+  currPowerValue: 0
 --- !u!82 &1567481755
 AudioSource:
   m_ObjectHideFlags: 0
