@@ -10,18 +10,26 @@ Rewind, listen, and find.
 ## Devlogs
 * v0.0.1:
     * Basic oscillator generating sound
-    * Basic audio player: play/pause, rewind, progress bar
-    * Basic keyboard: 7 notes from C4 to B4.
-    * Basic UI: hint
+    * Scene: single text-based scene representing hero and monster
+    * UI:
+        * Direct display of instructions
+        * input field with hint
+        * simple keyboard with 7 notes from C4 to B4.
+        * Hero: rewind, power pack
+        * Monster: sing, progress bar
 * v0.0.0: created a new Unity 2D project
 
 ## TODO
 * Doing
+    * confirm button
+    * fill/delete button
+    * Gameplay: win display
 * TODO
-    * Basic scene: menu, graphics, gameplay
-    * title, instructions, win display
-    * Button: regenerate, fill, delete, submit
-    * level design, Envelope
+    * title/menu,
+    * health/flee
+    * level design,
+    * graphics
+    * Envelope
 * Further
 
 ## Assets Credits
