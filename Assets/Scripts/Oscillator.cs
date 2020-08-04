@@ -60,7 +60,7 @@ public class Oscillator : MonoBehaviour
 
                     if (isRewinding)
                     {
-                        dataIndex -= 1;
+                        dataIndex -= 2;
                     }
                     else
                     {
@@ -75,7 +75,7 @@ public class Oscillator : MonoBehaviour
                         {
                             dataIndex = noteLength * noteList.Length;
                         }
-                        dataIndex -= 1;
+                        dataIndex -= 2;
                     }
                 }
             }
