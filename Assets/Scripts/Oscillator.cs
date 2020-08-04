@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Oscillator : MonoBehaviour
 {
     public int dataIndex;
-    public int maxPowerValue;
     public float currPowerValue;
 
     private double sampling_frequency;
@@ -27,7 +26,7 @@ public class Oscillator : MonoBehaviour
     {
         Init();
 
-        currPowerValue = maxPowerValue * noteLength * noteList.Length;
+        currPowerValue = 0;
 
         audioData = new float[noteList.Length][];
 
@@ -183,5 +182,32 @@ public class Oscillator : MonoBehaviour
             notelist[i] = temp;
         }
         return notelist;
+    }
+
+    public void IncPowerValue(int delta)
+    {
+        currPowerValue += (float) delta * noteLength * noteList.Length;
+
+        if (currPowerValue < 0)
+        {
+            currPowerValue = 0;
+        }
+    }
+
+    public void RefreshNoteList()
+    {
+        noteList = GeneNoteList();
+
+        for (int i = 0; i < noteList.Length; i++)
+        {
+            float thisFreq = frequencies[noteList[i]];
+            audioData[i] = CreateNoteData(thisFreq);
+        }
+    }
+
+    public void ResetDataIndex()
+    {
+        isPause = true;
+        dataIndex = 0;
     }
 }

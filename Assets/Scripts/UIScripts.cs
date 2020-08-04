@@ -10,7 +10,6 @@ public class UIScripts : MonoBehaviour
     public InputField inputField;
     public Text powerPoints;
     public int noteListLen;
-    public int hintDigits;
 
     private Oscillator oscillator;
     private GameplayManager gameplayManager;
@@ -21,22 +20,7 @@ public class UIScripts : MonoBehaviour
     {
         oscillator = FindObjectOfType<Oscillator>();
         gameplayManager = FindObjectOfType<GameplayManager>();
-        noteListString = oscillator.GetNoteString();
-
-        if (hintDigits < noteListLen)
-        {
-            string temp = "";
-            temp = noteListString.Substring(0, hintDigits);
-            for (int i = hintDigits; i < noteListLen; i++)
-            {
-                temp += "?";
-            }
-            inputField.placeholder.GetComponent<Text>().text = temp;
-        }
-        else
-        {
-            inputField.placeholder.GetComponent<Text>().text = noteListString;
-        }
+        UpdateNoteListString(0);
     }
 
     // Update is called once per frame
@@ -62,11 +46,33 @@ public class UIScripts : MonoBehaviour
         {
             Debug.Log("Correct");
             gameplayManager.EndGame();
+            oscillator.IncPowerValue(1);
         }
         else
         {
             Debug.Log("Wrong");
             gameplayManager.EndGame();
+            oscillator.IncPowerValue(-1);
+        }
+    }
+
+    public void UpdateNoteListString(int hintDigits)
+    {
+        noteListString = oscillator.GetNoteString();
+
+        if (hintDigits < noteListLen)
+        {
+            string temp = "";
+            temp = noteListString.Substring(0, hintDigits);
+            for (int i = hintDigits; i < noteListLen; i++)
+            {
+                temp += "?";
+            }
+            inputField.placeholder.GetComponent<Text>().text = temp;
+        }
+        else
+        {
+            inputField.placeholder.GetComponent<Text>().text = noteListString;
         }
     }
 }

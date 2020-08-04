@@ -3824,7 +3824,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataIndex: 0
-  maxPowerValue: 2
   currPowerValue: 0
 --- !u!82 &1567481755
 AudioSource:
@@ -5874,6 +5873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1991734181}
   Title: {fileID: 1586827376}
+  inputField: {fileID: 1110727959}
 --- !u!4 &2115729293
 Transform:
   m_ObjectHideFlags: 0
