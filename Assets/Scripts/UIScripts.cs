@@ -20,7 +20,6 @@ public class UIScripts : MonoBehaviour
     {
         oscillator = FindObjectOfType<Oscillator>();
         gameplayManager = FindObjectOfType<GameplayManager>();
-        UpdateNoteListString(0);
     }
 
     // Update is called once per frame

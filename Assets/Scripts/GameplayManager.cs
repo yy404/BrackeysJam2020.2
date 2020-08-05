@@ -28,7 +28,7 @@ public class GameplayManager : MonoBehaviour
     {
         panel.SetActive(true);
         Title.SetActive(false);
-        oscillator.RefreshNoteList();
+        oscillator.GeneAudioData();
         oscillator.ResetDataIndex();
         uiScripts.UpdateNoteListString(Random.Range(0, 7));
     }

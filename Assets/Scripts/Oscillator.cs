@@ -17,24 +17,15 @@ public class Oscillator : MonoBehaviour
     private int[] noteList;
     private float[][] audioData;
 
-    void Awake()
-    {
-        noteList = GeneNoteList();
-    }
-
     void Start()
     {
-        Init();
+        sampling_frequency = AudioSettings.outputSampleRate; //48000.0
+        noteLength = (int) sampling_frequency / 4;
 
         currPowerValue = 0;
 
-        audioData = new float[noteList.Length][];
-
-        for (int i = 0; i < noteList.Length; i++)
-        {
-            float thisFreq = frequencies[noteList[i]];
-            audioData[i] = CreateNoteData(thisFreq);
-        }
+        InitFrequencies();
+        GeneAudioData();
     }
 
     void Update()
@@ -155,11 +146,8 @@ public class Oscillator : MonoBehaviour
         return res;
     }
 
-    void Init()
+    void InitFrequencies()
     {
-        sampling_frequency = AudioSettings.outputSampleRate; //48000.0
-        noteLength = (int) sampling_frequency / 4;
-
         frequencies = new float[8];
         frequencies[0] = 0;
         frequencies[1] = 261.63f;
@@ -194,9 +182,11 @@ public class Oscillator : MonoBehaviour
         }
     }
 
-    public void RefreshNoteList()
+    public void GeneAudioData()
     {
         noteList = GeneNoteList();
+
+        audioData = new float[noteList.Length][];
 
         for (int i = 0; i < noteList.Length; i++)
         {
