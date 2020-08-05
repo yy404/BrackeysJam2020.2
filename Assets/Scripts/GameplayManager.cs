@@ -8,8 +8,11 @@ public class GameplayManager : MonoBehaviour
     public GameObject panel;
     public GameObject Title;
     public InputField inputField;
+    public GameObject[] enemies;
+
     private UIScripts uiScripts;
     private Oscillator oscillator;
+    private int currEnemyLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,8 @@ public class GameplayManager : MonoBehaviour
         oscillator.GeneAudioData();
         oscillator.ResetDataIndex();
 
+        currEnemyLevel = enemyLevel;
+
         int hintDigits = 0;
         switch (enemyLevel)
         {
@@ -51,10 +56,24 @@ public class GameplayManager : MonoBehaviour
         uiScripts.UpdateNoteListString(hintDigits);
     }
 
-    public void EndGame()
+    public void EndGame(bool isSuccessful)
     {
         panel.SetActive(false);
         Title.SetActive(true);
         inputField.text = "";
+
+        if (isSuccessful)
+        {
+            // Enable next level enemy
+            int currEnemyIndex = currEnemyLevel - 1;
+            if (currEnemyIndex+1 < enemies.Length)
+            {
+                enemies[currEnemyIndex+1].SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Win all levels");
+            }
+        }
     }
 }
