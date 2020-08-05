@@ -5912,6 +5912,7 @@ MonoBehaviour:
   panel: {fileID: 1991734181}
   Title: {fileID: 1586827376}
   inputField: {fileID: 1110727959}
+  toggle: {fileID: 391285699}
   enemies:
   - {fileID: 29338678}
   - {fileID: 496106914}

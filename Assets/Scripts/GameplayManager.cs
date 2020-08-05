@@ -8,6 +8,7 @@ public class GameplayManager : MonoBehaviour
     public GameObject panel;
     public GameObject Title;
     public InputField inputField;
+    public Toggle toggle;
     public GameObject[] enemies;
 
     private UIScripts uiScripts;
@@ -61,6 +62,7 @@ public class GameplayManager : MonoBehaviour
         panel.SetActive(false);
         Title.SetActive(true);
         inputField.text = "";
+        toggle.isOn = false;
 
         if (isSuccessful)
         {
