@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyScripts : MonoBehaviour
 {
@@ -20,6 +21,13 @@ public class EnemyScripts : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameplayManager.StartGame();
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            // Debug.Log("Clicked on the UI");
+        }
+        else
+        {
+            gameplayManager.StartGame();
+        }
     }
 }
