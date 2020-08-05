@@ -43,13 +43,13 @@ public class UIScripts : MonoBehaviour
     {
         if (inputField.text == noteListString)
         {
-            Debug.Log("Correct");
+            Debug.Log("Correct:" + noteListString);
             gameplayManager.EndGame();
             oscillator.IncPowerValue(1);
         }
         else
         {
-            Debug.Log("Wrong");
+            Debug.Log("Wrong:" + noteListString);
             gameplayManager.EndGame();
             oscillator.IncPowerValue(-1);
         }

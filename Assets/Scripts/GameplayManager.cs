@@ -24,13 +24,31 @@ public class GameplayManager : MonoBehaviour
 
     }
 
-    public void StartGame()
+    public void StartGame(int enemyLevel)
     {
+
         panel.SetActive(true);
         Title.SetActive(false);
         oscillator.GeneAudioData();
         oscillator.ResetDataIndex();
-        uiScripts.UpdateNoteListString(Random.Range(0, 7));
+
+        int hintDigits = 0;
+        switch (enemyLevel)
+        {
+            case 3:
+                hintDigits = 1;
+                break;
+            case 2:
+                hintDigits = Random.Range(2, 4); // 2 or 3
+                break;
+            case 1:
+                hintDigits = Random.Range(4, 6); // 4 or 5
+                break;
+            default:
+                Debug.Log("Unknown enemyLevel");
+                break;
+        }
+        uiScripts.UpdateNoteListString(hintDigits);
     }
 
     public void EndGame()

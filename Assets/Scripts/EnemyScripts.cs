@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class EnemyScripts : MonoBehaviour
 {
+    public int enemyLevel;
     private GameplayManager gameplayManager;
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class EnemyScripts : MonoBehaviour
         }
         else
         {
-            gameplayManager.StartGame();
+            gameplayManager.StartGame(enemyLevel);
         }
     }
 }
