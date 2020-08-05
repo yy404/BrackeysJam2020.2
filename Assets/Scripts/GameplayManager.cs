@@ -37,13 +37,13 @@ public class GameplayManager : MonoBehaviour
         switch (enemyLevel)
         {
             case 3:
-                hintDigits = 1;
+                hintDigits = 3;
                 break;
             case 2:
-                hintDigits = Random.Range(2, 4); // 2 or 3
+                hintDigits = 4; // Random.Range(2, 4) // 2 or 3
                 break;
             case 1:
-                hintDigits = Random.Range(4, 6); // 4 or 5
+                hintDigits = 5; // Random.Range(4, 6) // 4 or 5
                 break;
             default:
                 Debug.Log("Unknown enemyLevel");
