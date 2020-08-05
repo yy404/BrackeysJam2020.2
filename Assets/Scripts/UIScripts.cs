@@ -8,7 +8,12 @@ public class UIScripts : MonoBehaviour
     public Slider monsterSlider;
     public Slider heroSlider;
     public InputField inputField;
+    public Toggle toggle;
     public Text powerPoints;
+    public GameObject title;
+    public GameObject panel;
+    public GameObject endPanel;
+    public Text endPanelText;
     public int noteListLen;
 
     private Oscillator oscillator;
@@ -43,16 +48,36 @@ public class UIScripts : MonoBehaviour
     {
         if (inputField.text == noteListString)
         {
-            Debug.Log("Correct:" + noteListString);
-            gameplayManager.EndGame(true); // end game win
+            endPanelText.text = "Your Answer: " + inputField.text;
+            endPanelText.text += "\n" + "Correct!";
+            endPanelText.text += "\n" + "Win 1 Rewind Power Pack!";
+            gameplayManager.EnableNextLevel();
             oscillator.IncPowerValue(1);
         }
         else
         {
-            Debug.Log("Wrong:" + noteListString);
-            gameplayManager.EndGame(false); // end game lose
-            oscillator.IncPowerValue(-1);
+            endPanelText.text = "Your Answer: " + inputField.text;
+            endPanelText.text += "\n" + "Wrong!";
+            endPanelText.text += "\n" + "Correct Answer: " + noteListString;
+            // endPanelText.text += "\n" + "Lose 1 Power Pack!";
+            // oscillator.IncPowerValue(-1);
         }
+        endPanel.SetActive(true);
+    }
+
+    public void ReturnMenuScene()
+    {
+        panel.SetActive(false);
+        endPanel.SetActive(false);
+        title.SetActive(true);
+        inputField.text = "";
+        toggle.isOn = false;
+    }
+
+    public void LeaveMenuScene()
+    {
+        panel.SetActive(true);
+        title.SetActive(false);
     }
 
     public void UpdateNoteListString(int hintDigits)

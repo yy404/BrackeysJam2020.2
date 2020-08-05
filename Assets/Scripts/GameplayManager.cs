@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class GameplayManager : MonoBehaviour
 {
-    public GameObject panel;
-    public GameObject Title;
-    public InputField inputField;
-    public Toggle toggle;
     public GameObject[] enemies;
 
     private UIScripts uiScripts;
@@ -31,8 +27,7 @@ public class GameplayManager : MonoBehaviour
     public void StartGame(int enemyLevel)
     {
 
-        panel.SetActive(true);
-        Title.SetActive(false);
+        uiScripts.LeaveMenuScene();
         oscillator.GeneAudioData();
         oscillator.ResetDataIndex();
 
@@ -57,25 +52,17 @@ public class GameplayManager : MonoBehaviour
         uiScripts.UpdateNoteListString(hintDigits);
     }
 
-    public void EndGame(bool isSuccessful)
+    public void EnableNextLevel()
     {
-        panel.SetActive(false);
-        Title.SetActive(true);
-        inputField.text = "";
-        toggle.isOn = false;
-
-        if (isSuccessful)
+        // Enable next level enemy
+        int currEnemyIndex = currEnemyLevel - 1;
+        if (currEnemyIndex+1 < enemies.Length)
         {
-            // Enable next level enemy
-            int currEnemyIndex = currEnemyLevel - 1;
-            if (currEnemyIndex+1 < enemies.Length)
-            {
-                enemies[currEnemyIndex+1].SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Win all levels");
-            }
+            enemies[currEnemyIndex+1].SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Win all levels");
         }
     }
 }
