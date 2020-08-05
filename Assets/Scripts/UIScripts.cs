@@ -48,11 +48,12 @@ public class UIScripts : MonoBehaviour
     {
         if (inputField.text == noteListString)
         {
+            int incPowerNum = 5;
             endPanelText.text = "Your Answer: " + inputField.text;
             endPanelText.text += "\n" + "Correct!";
-            endPanelText.text += "\n" + "Win 1 Rewind Power Pack!";
+            endPanelText.text += "\n" + "Win Power Pack " + "x" + incPowerNum.ToString();
+            oscillator.IncPowerValue(incPowerNum);
             gameplayManager.EnableNextLevel();
-            oscillator.IncPowerValue(1);
         }
         else
         {

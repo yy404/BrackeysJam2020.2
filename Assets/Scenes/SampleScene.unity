@@ -6281,6 +6281,7 @@ MonoBehaviour:
   - {fileID: 29338678}
   - {fileID: 496106914}
   - {fileID: 1816306145}
+  initPowerPackNum: 5
 --- !u!4 &2115729293
 Transform:
   m_ObjectHideFlags: 0

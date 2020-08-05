@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameplayManager : MonoBehaviour
 {
     public GameObject[] enemies;
+    public int initPowerPackNum;
 
     private UIScripts uiScripts;
     private Oscillator oscillator;
@@ -16,6 +17,9 @@ public class GameplayManager : MonoBehaviour
     {
         uiScripts = FindObjectOfType<UIScripts>();
         oscillator = FindObjectOfType<Oscillator>();
+
+        oscillator.IncPowerValue(initPowerPackNum);
+
     }
 
     // Update is called once per frame
