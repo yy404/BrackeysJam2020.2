@@ -3544,7 +3544,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ready To Type?
+  m_Text: Play To Answer?
 --- !u!222 &1269301046
 CanvasRenderer:
   m_ObjectHideFlags: 0
