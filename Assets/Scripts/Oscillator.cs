@@ -11,6 +11,7 @@ public class Oscillator : MonoBehaviour
     private double sampling_frequency;
     private int noteLength;
     private float[] frequencies;
+    private AudioSource audioSource;
 
     private bool isPause = true;
     private bool isRewinding = false;
@@ -21,6 +22,8 @@ public class Oscillator : MonoBehaviour
     {
         sampling_frequency = AudioSettings.outputSampleRate; //48000.0
         noteLength = (int) sampling_frequency / 4;
+
+        audioSource = GetComponent<AudioSource>();
 
         currPowerValue = 0;
 
@@ -199,5 +202,33 @@ public class Oscillator : MonoBehaviour
     {
         isPause = true;
         dataIndex = 0;
+    }
+
+    public void SingNotes(int[] thisNoteList)
+    {
+        // initialise the samples to be created
+        int samplesLength = noteLength * thisNoteList.Length;
+        float[] samples = new float[samplesLength];
+
+        // fill the samples with data
+        for (int i = 0; i < thisNoteList.Length; i++)
+        {
+            // create data for this note
+            float[] thisNoteData = CreateNoteData(frequencies[thisNoteList[i]]);
+
+            // calculate starting index for this part of samples
+            int startIndex = i * noteLength;
+
+            //assign this note data to samples
+            for (int j = 0; j < noteLength; j++)
+            {
+                samples[startIndex + j] = thisNoteData[j];
+            }
+        }
+
+        // play the created samples
+        AudioClip ac = AudioClip.Create("SingAnswer", samplesLength, 1, (int) sampling_frequency, false);
+        ac.SetData(samples, 0);
+        audioSource.PlayOneShot(ac, 1.0f);
     }
 }

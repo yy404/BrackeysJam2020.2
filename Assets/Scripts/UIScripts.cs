@@ -118,4 +118,25 @@ public class UIScripts : MonoBehaviour
     {
         inputField.text = noteListString.Substring(0, hintDigitsNum);
     }
+
+    public void SingAnswer()
+    {
+        if (inputField.text.Length > 0)
+        {
+            char[] charArray = inputField.text.ToCharArray();
+            int[] intArray = new int[charArray.Length];
+
+            // convert the answer to int array
+            for (int i = 0; i < charArray.Length; i++)
+            {
+                int bar;
+                if (int.TryParse(charArray[i].ToString(), out bar))
+                {
+                    intArray[i] = bar;
+                }
+            }
+
+            oscillator.SingNotes(intArray);
+        }
+    }
 }
