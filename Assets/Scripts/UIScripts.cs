@@ -139,4 +139,27 @@ public class UIScripts : MonoBehaviour
             oscillator.SingNotes(intArray);
         }
     }
+
+    // note this is a recursion because
+    // the change of InputField will trigger this function again
+    public void ValidateInput()
+    {
+        if (inputField.text.Length > 0)
+        {
+            // limit the length no more than note list
+            if (inputField.text.Length > noteListLen)
+            {
+                inputField.text = inputField.text.Substring(0, noteListLen);
+            }
+
+            // only allow digits from 1 to 7
+            int inputDigits;
+            bool isDigits = int.TryParse(inputField.text, out inputDigits);
+            if ( !isDigits || (inputDigits%10 == 0) || (inputDigits%10 > 7))
+            {
+                // remove the last char if invalid
+                inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+            }
+        }
+    }
 }
