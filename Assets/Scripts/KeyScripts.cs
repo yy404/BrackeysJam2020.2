@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class KeyScripts : MonoBehaviour
+public class KeyScripts : MonoBehaviour, IPointerClickHandler
 {
     public int keyValue;
     private Button button;
@@ -38,5 +39,24 @@ public class KeyScripts : MonoBehaviour
     public void StopKey()
     {
         keyOscillator.Stop();
+    }
+
+    // check which mouse button clicked
+    // Enabling right-click input
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            // Debug.Log("Left click");
+        }
+        else if (eventData.button == PointerEventData.InputButton.Middle)
+        {
+            // Debug.Log("Middle click");
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            // Debug.Log("Right click");
+            inputField.text += keyValue.ToString();
+        }
     }
 }
