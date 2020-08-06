@@ -3926,7 +3926,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Right-Click To Answer
+  m_Text: Right Click To Fill
 --- !u!222 &1207812703
 CanvasRenderer:
   m_ObjectHideFlags: 0
