@@ -19,6 +19,7 @@ public class UIScripts : MonoBehaviour
     private Oscillator oscillator;
     private GameplayManager gameplayManager;
     public string noteListString;
+    private int hintDigitsNum;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +96,8 @@ public class UIScripts : MonoBehaviour
     {
         noteListString = oscillator.GetNoteString();
 
+        hintDigitsNum = hintDigits;
+
         if (hintDigits < noteListLen)
         {
             string temp = "";
@@ -109,5 +112,10 @@ public class UIScripts : MonoBehaviour
         {
             inputField.placeholder.GetComponent<Text>().text = noteListString;
         }
+    }
+
+    public void FillHints()
+    {
+        inputField.text = noteListString.Substring(0, hintDigitsNum);
     }
 }
