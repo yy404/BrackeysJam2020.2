@@ -30,9 +30,12 @@ public class KeyScripts : MonoBehaviour, IPointerClickHandler
     public void PlayKey()
     {
         keyOscillator.PlayKey(keyValue);
-        if (toggle.isOn)
+        if (toggle != null)
         {
-            inputField.text += keyValue.ToString();
+            if (toggle.isOn)
+            {
+                inputField.text += keyValue.ToString();
+            }
         }
     }
 

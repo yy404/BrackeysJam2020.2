@@ -72,7 +72,10 @@ public class UIScripts : MonoBehaviour
         endPanel.SetActive(false);
         title.SetActive(true);
         inputField.text = "";
-        toggle.isOn = false;
+        if (toggle != null)
+        {
+            toggle.isOn = false;
+        }
     }
 
     public void LeaveMenuScene()
