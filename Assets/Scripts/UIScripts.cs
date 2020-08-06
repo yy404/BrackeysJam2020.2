@@ -51,9 +51,16 @@ public class UIScripts : MonoBehaviour
             int incPowerNum = 5;
             endPanelText.text = "Your Answer: " + inputField.text;
             endPanelText.text += "\n" + "Correct!";
-            endPanelText.text += "\n" + "Win Power Pack " + "x" + incPowerNum.ToString();
             oscillator.IncPowerValue(incPowerNum);
-            gameplayManager.EnableNextLevel();
+            bool hasNextLevel = gameplayManager.EnableNextLevel();
+            if (hasNextLevel)
+            {
+                endPanelText.text += "\n" + "Win Power Pack " + "x" + incPowerNum.ToString();
+            }
+            else
+            {
+                endPanelText.text += "\n" + "Win All Levels!!!";
+            }
         }
         else
         {

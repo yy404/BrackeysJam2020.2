@@ -56,17 +56,19 @@ public class GameplayManager : MonoBehaviour
         uiScripts.UpdateNoteListString(hintDigits);
     }
 
-    public void EnableNextLevel()
+    public bool EnableNextLevel()
     {
         // Enable next level enemy
         int currEnemyIndex = currEnemyLevel - 1;
         if (currEnemyIndex+1 < enemies.Length)
         {
             enemies[currEnemyIndex+1].SetActive(true);
+            return true;
         }
         else
         {
-            Debug.Log("Win all levels");
+            // Debug.Log("Win all levels");
+            return false;
         }
     }
 }
