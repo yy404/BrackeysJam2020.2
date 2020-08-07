@@ -8,7 +8,7 @@ Let the monster sing when you are ready.
 It won't sing again unless you rewind.
 Answer the sequence of melody to win.
 
-*Controls: Mouse click*
+*Controls: Mouse click (ESC to quit)*
 
 ## Additional Notes
 
