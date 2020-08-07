@@ -7272,7 +7272,7 @@ MonoBehaviour:
   - {fileID: 1925983526}
   - {fileID: 854828574}
   - {fileID: 1227811121}
-  initPowerPackNum: 2
+  initPowerPackNum: 5
 --- !u!4 &2115729293
 Transform:
   m_ObjectHideFlags: 0
