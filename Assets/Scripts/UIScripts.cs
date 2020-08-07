@@ -15,6 +15,7 @@ public class UIScripts : MonoBehaviour
     public GameObject endPanel;
     public Text endPanelText;
     public int noteListLen;
+    public int incPowerNum;
 
     private Oscillator oscillator;
     private GameplayManager gameplayManager;
@@ -49,7 +50,6 @@ public class UIScripts : MonoBehaviour
     {
         if (inputField.text == noteListString)
         {
-            int incPowerNum = 5;
             endPanelText.text = "Your Answer: " + inputField.text;
             endPanelText.text += "\n" + "Correct!";
             oscillator.IncPowerValue(incPowerNum);

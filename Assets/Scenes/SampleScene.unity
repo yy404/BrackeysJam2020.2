@@ -1621,6 +1621,7 @@ MonoBehaviour:
   endPanel: {fileID: 263492301}
   endPanelText: {fileID: 2102905525}
   noteListLen: 7
+  incPowerNum: 2
   noteListString: 
 --- !u!4 &531177268
 Transform:
@@ -7027,7 +7028,7 @@ MonoBehaviour:
   - {fileID: 1925983526}
   - {fileID: 854828574}
   - {fileID: 1227811121}
-  initPowerPackNum: 5
+  initPowerPackNum: 2
 --- !u!4 &2115729293
 Transform:
   m_ObjectHideFlags: 0
