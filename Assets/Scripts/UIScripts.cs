@@ -44,6 +44,10 @@ public class UIScripts : MonoBehaviour
             int intPart = (int) (oscillator.GetCurrPowerValue() - decimalPart);
             powerPoints.text = "x" + intPart.ToString();
         }
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     public void CheckInput()
